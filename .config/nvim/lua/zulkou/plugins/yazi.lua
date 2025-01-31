@@ -28,6 +28,9 @@ return {
         open_for_directories = false,
         keymaps = {
             show_help = "<f1>",
+            open_file_in_vertical_split = "<S-v>",
+            open_file_in_horizontal_split = "<S-x>",
+            change_working_directory = "<S-/>",
         },
     },
 }

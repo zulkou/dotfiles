@@ -27,5 +27,6 @@
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "cc04970748384918e8334407d366cc998d34988d" },
   "undotree": { "branch": "master", "commit": "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f" },
   "vim-fugitive": { "branch": "master", "commit": "d74a7cff4cfcf84f83cc7eccfa365488f3bbabc2" },
-  "which-key.nvim": { "branch": "main", "commit": "0e76a87ac51772569aec678dc74baa8e2a86100c" }
+  "which-key.nvim": { "branch": "main", "commit": "0e76a87ac51772569aec678dc74baa8e2a86100c" },
+  "yazi.nvim": { "branch": "main", "commit": "9a39d68534cb5ae7250aa50fcc233335843dd786" }
 }

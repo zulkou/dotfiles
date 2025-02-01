@@ -25,7 +25,7 @@ return {
                             ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({
                                 postfix =
                                 " --hidden --no-ignore-vcs"
-                            }),                                                                     -- Add hidden and no-ignore flags
+                            }), -- Add hidden and no-ignore flags
                         },
                     },
                 },
@@ -50,7 +50,7 @@ return {
         local live_grep_show_hidden = function()
             builtin.live_grep({
                 additional_args = {
-                    "--hidden", -- Include hidden files
+                    "--hidden",        -- Include hidden files
                     "--no-ignore-vcs", -- Respect .gitignore
                     "--glob", "!.git", -- Exclude .git directory (optional)
                 },
@@ -58,9 +58,23 @@ return {
         end
 
 
-        vim.keymap.set('n', '<leader>pf', find_files_show_hidden, {})
-        vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-        vim.keymap.set("n", "<leader>ps", live_grep_show_hidden, { desc = "Live grep (show hidden, respect .gitignore)" })
-        vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+        vim.keymap.set('n', '<leader>pf', find_files_show_hidden, { desc = "Find files" })
+        vim.keymap.set('n', '<C-p>', builtin.git_files, {desc = "Find git files"})
+        vim.keymap.set("n", "<leader>pl", live_grep_show_hidden, { desc = "Live grep" })
+        vim.keymap.set("n", "<leader>ps", function()
+            builtin.grep_string({
+                search = vim.fn.input("Grep > "),
+                only_sort_text = true,
+                search_dirs = { vim.fn.expand("%:p") },
+            })
+        end, { desc = "Grep string in current buffer" })
+        vim.keymap.set("n", "<leader>pw", function()
+            builtin.grep_string({
+                search = vim.fn.expand("<cword>"),
+                only_sort_text = true,
+                search_dirs = { vim.fn.expand("%:p") },
+            })
+        end, { desc = "Grep word under cursor in current buffer" })
+        vim.keymap.set('n', '<leader>vh', builtin.help_tags, { desc = "Search neovim docs" })
     end
 }

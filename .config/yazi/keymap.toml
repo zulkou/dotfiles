@@ -1,0 +1,9 @@
+[[manager.prepend_keymap]]
+on   = [ "g", "h" ]
+run  = "cd ~/workspace/github.com/zulkou/"
+desc = "cd to /github.com/zulkou"
+
+[[manager.prepend_keymap]]
+on = [ "g", "d" ]
+run = "cd ~/dotfiles"
+desc = "cd to ~/dotfiles"

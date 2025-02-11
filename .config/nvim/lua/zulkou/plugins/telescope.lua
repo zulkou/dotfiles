@@ -13,6 +13,7 @@ return {
 
     config = function()
         local telescope = require('telescope')
+        local actions = require('telescope.actions')
 
         telescope.setup({
             extensions = {
@@ -26,6 +27,8 @@ return {
                                 postfix =
                                 " --hidden --no-ignore-vcs"
                             }), -- Add hidden and no-ignore flags
+                            ["<C-v>"] = actions.select_vertical,
+                            ["<C-x>"] = actions.select_horizontal,
                         },
                     },
                 },

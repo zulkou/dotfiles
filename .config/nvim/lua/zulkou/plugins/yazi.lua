@@ -28,8 +28,8 @@ return {
         open_for_directories = false,
         keymaps = {
             show_help = "<f1>",
-            open_file_in_vertical_split = "<S-v>",
-            open_file_in_horizontal_split = "<S-x>",
+            open_file_in_vertical_split = "<C-v>",
+            open_file_in_horizontal_split = "<C-x>",
             change_working_directory = "<S-\\>",
         },
     },

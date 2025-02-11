@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.clipboard="unnamedplus"
+-- vim.opt.clipboard="unnamedplus"
 
 vim.opt.wrap = false
 
@@ -30,6 +30,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+--[[
 if vim.fn.has('wsl') == 1 then
     vim.g.clipboard = {
         name = 'WslClipboard',
@@ -44,3 +45,4 @@ if vim.fn.has('wsl') == 1 then
         cache_enabled = 0,
     }
 end
+]]--

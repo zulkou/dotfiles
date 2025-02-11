@@ -15,6 +15,11 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Right>", "<cmd>resize +2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-Left>", "<cmd>resize -2<CR>", { desc = "Decrease window width" })
+
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])

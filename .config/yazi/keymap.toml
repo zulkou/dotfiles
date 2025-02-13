@@ -7,3 +7,8 @@ desc = "cd to /github.com/zulkou"
 on = [ "g", "d" ]
 run = "cd ~/dotfiles"
 desc = "cd to ~/dotfiles"
+
+[[manager.prepend_keymap]]
+on = [ "\\" ]
+run = "shell nvim --block" 
+desc = "run nvim"

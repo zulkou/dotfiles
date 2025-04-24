@@ -1,9 +1,14 @@
 return {
 	"folke/trouble.nvim",
+    cmd = "Trouble",
 	opts = {
-        position = "right"
+        win = {
+            type = "split",
+            relative = "win",
+            position = "right",
+            size = 0.3,
+        },
     }, -- for default options, refer to the configuration section for custom setup.
-	cmd = "Trouble",
 	keys = {
 		{
 			"<leader>xx",

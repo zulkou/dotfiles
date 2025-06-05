@@ -1,9 +1,9 @@
 return {
-	'nvim-lualine/lualine.nvim',
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	opts = {
-		options = {
-			theme = 'material',
-		}
-	}
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons"},
+    config = function()
+        require("lualine").setup{
+            options = { theme = "nightfly" }
+        }
+    end
 }

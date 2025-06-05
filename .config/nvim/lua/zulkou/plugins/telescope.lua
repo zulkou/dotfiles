@@ -1,20 +1,11 @@
 return {
     "nvim-telescope/telescope.nvim",
-
-    tag = "0.1.5",
-
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        {
-            "nvim-telescope/telescope-live-grep-args.nvim",
-            version = "^1.0.0",
-        }
-    },
+    tag = "0.1.8",
+    dependencies = { "nvim-lua/plenary.nvim" },
 
     config = function()
-        local telescope = require('telescope')
-        local actions = require('telescope.actions')
-
+        local telescope = require("telescope")
+        local actions = require("telescope.actions")
         telescope.setup({
             extensions = {
                 live_grep_args = {
@@ -80,4 +71,6 @@ return {
         end, { desc = "Grep word under cursor in current buffer" })
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, { desc = "Search neovim docs" })
     end
+
+
 }

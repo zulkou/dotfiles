@@ -1,3 +1,5 @@
+-- FIX: Prevent comment to be italic
+-- TODO: Add ~ to unused space
 return {
     "catppuccin/nvim",
     name = "catppuccin",

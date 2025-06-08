@@ -1,3 +1,5 @@
+-- TODO: Add snippet
+-- TODO: Add autocompletion
 return {
     "mason-org/mason-lspconfig.nvim",
     opts = {

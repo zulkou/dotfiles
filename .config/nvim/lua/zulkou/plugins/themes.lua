@@ -1,5 +1,3 @@
--- FIX: Prevent comment to be italic
--- TODO: Add ~ to unused space
 return {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -8,7 +6,15 @@ return {
     config = function()
         require("catppuccin").setup({
             flavour = "mocha",
-            show_end_buffer = true,
+            show_end_of_buffer = true,
+            dim_inactive = {
+                enabled = true,
+                shade = "dark",
+                percentage = 0.15,
+            },
+            styles = {
+                comments = {}
+            }
         })
 
         vim.cmd.colorscheme "catppuccin"

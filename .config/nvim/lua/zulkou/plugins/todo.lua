@@ -1,21 +1,28 @@
 return {
     "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    keys = {
-        { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo" },
-        { "<leader>sT", function () Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
-    },
+    event = { "BufRead", "BufNewFile" },
     opts = {
         search = {
             command = "rg",
             args = {
-              "--color=never",
-              "--no-heading",
-              "--with-filename",
-              "--line-number",
-              "--column",
-              "--hidden"
+                "--color=never",
+                "--no-heading",
+                "--with-filename",
+                "--line-number",
+                "--column",
+                "--hidden",
             },
-        }
+        },
+    },
+    keys = {
+        -- TODO: test
+        {
+            "<leader>qt",
+            function()
+                require("snacks").picker.todo_comments({ hidden = true })
+            end,
+            mode = "n",
+            desc = "Show TODOs with snacks",
+        },
     },
 }

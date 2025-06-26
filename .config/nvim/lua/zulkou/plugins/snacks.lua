@@ -3,7 +3,8 @@ return {
     priority = 1000,
     lazy = false,
     keys = {
-        -- TODO: optimize keymap and prevent it to overlap.
+        -- TODO: Optimize the keymap
+        -- TODO: Add more snacks feature (probably use snacks.terminal instead of toggleterm, etc)
 
         -- Active Pickers
         { "<leader>e", function() Snacks.explorer({ debug = { scores = false }, ignored = true }) end, desc = "File Explorer"}, -- prefer navigating through yazi, but I keep it to view project's structure
@@ -21,10 +22,10 @@ return {
         { "<leader>qd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" }, -- help with diagnostic
         { "<leader>qD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" }, -- help with diagnostic
 
-        { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" }, -- nice to have
-        { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" }, -- picker based which-key
+        { "<leader>ic", function() Snacks.picker.icons() end, desc = "Icons" }, -- nice to have
+        { "<leader>km", function() Snacks.picker.keymaps() end, desc = "Keymaps" }, -- picker based which-key
         { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" }, -- help remembering command
-        { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" }, -- nice to have
+        { '<leader>sR"', function() Snacks.picker.registers() end, desc = "Registers" }, -- nice to have
         { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" }, -- nice to have
         { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" }, -- quick access to config files
         { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" }, -- nice to keep track of installed plugins

@@ -8,6 +8,26 @@ return {
             { "mason-org/mason.nvim", opts = {} },
             "neovim/nvim-lspconfig",
         },
+        config = function ()
+            local mason = require("mason")
+            local mason_lspconfig = require("mason-lspconfig")
+            local util = require("lspconfig.util")
+
+            mason.setup()
+            mason_lspconfig.setup(opts)
+
+              -- Buf Beta LSP (manual, outside Mason)
+            vim.lsp.config["buf_ls"] = {
+                cmd = { "buf", "beta", "lsp", "--timeout=0", "--log-format=text" },
+                filetypes = { "proto" },
+                root_dir = function(fname)
+                    return util.root_pattern("buf.yaml", ".git")(fname)
+                        or vim.fn.getcwd()
+                end,
+            }
+
+            vim.lsp.enable("buf_ls")
+        end
     },
     -- Autocompletion w/ blink.cmp
     {

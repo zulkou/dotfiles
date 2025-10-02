@@ -4,7 +4,7 @@ return {
     lazy = false,
     build = ":TSUpdate",
     opts = {
-        ensure_installed = { "lua", "python", "go", "c_sharp", "vim", "vimdoc", "query", "markdown"},
+        ensure_installed = { "lua", "python", "go", "c_sharp", "vim", "vimdoc", "query", "markdown", "html", "typescript"},
         highlight = {
             enable = true,
             disable = function(lang, buf)
@@ -16,5 +16,5 @@ return {
             end,
             additional_vim_regex_highlighting = false,
         }
-    }
+    },
 }

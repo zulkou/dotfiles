@@ -15,7 +15,6 @@ return {
         },
     },
     keys = {
-        -- TODO: test
         {
             "<leader>qt",
             function()

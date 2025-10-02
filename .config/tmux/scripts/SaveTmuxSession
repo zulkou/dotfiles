@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+find -L /tmp -maxdepth 1 -name .tmux-saving -mtime +1 -delete
+mkdir -p ~/.tmux_sessions
+cd ~/.tmux_sessions
+test -e .git || git init --quiet
+
+if [ ! -f /tmp/.tmux-saving ]; then
+    (
+        git add -A
+        git commit -qam "$(date)" > /dev/null || true
+        rm -f /tmp/.tmux-saving
+    ) &
+fi
+touch /tmp/.tmux-saving
+
+# run python script to actually save tmux state
+python3 ~/.config/tmux/scripts/tmux-save.py

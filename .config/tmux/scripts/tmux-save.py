@@ -58,7 +58,7 @@ def create_sessions(file_output):
                 print(f"tmux has-session -t {session} || tmux new-session -d {print_info}{path_info} -n {window} -s {session}", file=file_output)
                 create_windows(session, file_output)
             if attached != 0:
-                attached_sessions.append(f"tmux -L {socket} attach-session -t {session}")
+                attached_sessions.append(f"tmux -u -L {socket} attach-session -t {session}")
         except ValueError:
             print('line', line)
             raise

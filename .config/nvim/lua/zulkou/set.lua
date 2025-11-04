@@ -28,6 +28,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+--[[
 if vim.fn.has("wsl") == 1 then
     if vim.fn.executable("wl-copy") == 0 then
         print("wl-clipboard not found, clipboard integration won't work")
@@ -50,5 +51,51 @@ if vim.fn.has("wsl") == 1 then
         }
     end
 end
+]]
 
-vim.opt.clipboard="unnamedplus"
+
+-- vim.opt.clipboard="unnamedplus"
+
+local function osc52_copy()
+  local text = table.concat(vim.fn.getreg('"', 1, true), "\n")
+
+  if text == "" then
+    vim.notify("Nothing to copy", vim.log.levels.WARN)
+    return
+  end
+
+  -- Base64 encode
+  local b64 = vim.fn.system("printf %s " .. vim.fn.shellescape(text) .. " | base64 | tr -d '\n'")
+
+  -- Build OSC52 sequence (tmux-safe)
+  local osc
+  if os.getenv("TMUX") then
+    osc = string.format("\027Ptmux;\027\027]52;c;%s\007\027\\", b64)
+  else
+    osc = string.format("\027]52;c;%s\007", b64)
+  end
+
+  -- Write directly to terminal
+  local f = io.open("/proc/self/fd/1", "w")
+  if f then
+    f:write(osc)
+    f:close()
+    vim.notify("Copied to clipboard (OSC52)", vim.log.levels.INFO)
+  else
+    vim.notify("Failed to open /dev/tty", vim.log.levels.ERROR)
+  end
+end
+
+-- Register as a user command and keymap
+vim.api.nvim_create_user_command("OscYank", osc52_copy, {})
+
+vim.keymap.set({ "n", "v" }, "<leader>y", function()
+  vim.cmd('normal! "+y')
+  vim.cmd('OscYank')
+end, { silent = true, desc = "Yank to system clipboard and OSC52" })
+
+vim.keymap.set("n", "<leader>Y", function()
+  vim.cmd('normal! "+Y')
+  vim.cmd('OscYank')
+end, { silent = true, desc = "Yank line to system clipboard and OSC52" })
+
